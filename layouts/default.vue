@@ -4,6 +4,7 @@
     <div class="container">
       <Nuxt />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   --primary-blue: #2f80ed;
   --dark: #000;
   --white: #fff;
+  --full-height: calc(100vh - 154px);
 }
 
 html {
