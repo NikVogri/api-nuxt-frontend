@@ -14,6 +14,7 @@
       :key="continent.continent"
       :peoplePerBlob="100000"
       :viewMoreUrl="`/continents?name=${continent.continent}`"
+      :animateOnScroll="true"
     >
       <h2 class="heading-3">{{ continent.continent }}</h2>
       <p>

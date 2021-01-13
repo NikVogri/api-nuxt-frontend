@@ -9,6 +9,7 @@
       :active="data.activeCases"
       :deaths="data.totalDeaths"
       :blobValue="peoplePerBlob"
+      :animateOnScroll="animateOnScroll"
     />
     <div class="visual-data__button">
       <router-link v-if="viewMoreUrl" :to="viewMoreUrl" class="btn btn-primary">
@@ -34,6 +35,10 @@ export default Vue.extend({
     peoplePerBlob: {
       type: Number,
       required: true
+    },
+    animateOnScroll: {
+      type: Boolean,
+      required: false
     }
   },
   mounted() {

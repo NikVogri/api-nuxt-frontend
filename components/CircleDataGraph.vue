@@ -3,7 +3,7 @@
     <transition appear name="blob">
       <div class="data-graph__blob-grid">
         <span
-          data-aos="zoom-in"
+          :data-aos="animateOnScroll ? 'zoom-in' : ''"
           v-for="n in totalInfected"
           :key="n"
           :class="{
@@ -44,6 +44,11 @@ export default Vue.extend({
     blobValue: {
       type: Number,
       required: false
+    },
+    animateOnScroll: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   computed: {

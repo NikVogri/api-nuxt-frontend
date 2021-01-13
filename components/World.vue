@@ -1,5 +1,9 @@
 <template>
-  <VisualData :data="data" :peoplePerBlob="500000">
+  <VisualData
+    :data="data"
+    :peoplePerBlob="500000"
+    :animateOnScroll="animateOnScroll"
+  >
     <h2 class="heading-2">World</h2>
     <p>{{ data.totalCases | formatNumber }} total infected since the start</p>
     <p>
@@ -23,6 +27,10 @@ export default Vue.extend({
     data: {
       required: true,
       type: Object
+    },
+    animateOnScroll: {
+      required: false,
+      type: Boolean
     }
   }
 });
