@@ -8,19 +8,50 @@
       </p>
     </div>
 
-    <VisualData :dataUrl="'https://www.google.si'">
-      <h2 class="heading-3">North America</h2>
-      <p>91,438,689 total infected since the start</p>
-      <p>24,044,055 active cases (+116,566)</p>
-      <p>1,956,174 deaths ( +3,640)</p>
+    <VisualData
+      v-for="continent in continentData"
+      :data="continent"
+      :key="continent.continent"
+      :peoplePerBlob="100000"
+      :viewMoreUrl="`/continents?name=${continent.continent}`"
+    >
+      <h2 class="heading-3">{{ continent.continent }}</h2>
+      <p>
+        {{ continent.totalCases | formatNumber }} total infected since the start
+      </p>
+      <p>
+        {{ continent.activeCases | formatNumber }} active cases (+{{
+          continent.newCases | formatNumber
+        }})
+      </p>
+      <p>
+        {{ continent.totalDeaths | formatNumber }}deaths (+{{
+          continent.newDeaths | formatNumber
+        }})
+      </p>
     </VisualData>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { Continent } from "~/types/Continent";
 
-export default Vue.extend({});
+export default Vue.extend({
+  async fetch() {
+    const res = await this.$axios.$get("/continents");
+    const continentsData = res.data.filter(
+      (continent: Continent) => continent.continent !== "All"
+    );
+
+    this.continentData = continentsData;
+  },
+  data() {
+    return {
+      continentData: null
+    };
+  }
+});
 </script>
 
 <style lang="scss" scoped>

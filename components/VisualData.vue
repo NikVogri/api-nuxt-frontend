@@ -5,13 +5,13 @@
     </div>
 
     <CircleDataGraph
-      :total="91438689"
-      :active="24044055"
-      :deaths="1956174"
-      :blobValue="500000"
+      :total="data.totalCases"
+      :active="data.activeCases"
+      :deaths="data.totalDeaths"
+      :blobValue="peoplePerBlob"
     />
     <div class="visual-data__button">
-      <router-link v-if="dataUrl" :to="dataUrl" class="btn btn-primary">
+      <router-link v-if="viewMoreUrl" :to="viewMoreUrl" class="btn btn-primary">
         Get more data
       </router-link>
     </div>
@@ -23,10 +23,21 @@ import Vue from "vue";
 
 export default Vue.extend({
   props: {
-    dataUrl: {
+    viewMoreUrl: {
       type: String,
       required: false
+    },
+    data: {
+      type: Object,
+      required: true
+    },
+    peoplePerBlob: {
+      type: Number,
+      required: true
     }
+  },
+  mounted() {
+    console.log(this.data);
   }
 });
 </script>

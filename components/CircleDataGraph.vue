@@ -16,8 +16,8 @@
     </transition>
     <div class="data-graph__legend">
       <ul>
-        <li><span></span> = {{ blobValue }} cases</li>
-        <li><span class="total-infected"></span> Infected</li>
+        <li><span></span> = {{ calculateBlobValue | formatNumber }} cases</li>
+        <li><span class="total-infected"></span> Total Infected</li>
         <li><span class="currently-infected"></span> Active Cases</li>
         <li><span class="deaths"></span> Deaths</li>
       </ul>
@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 export default Vue.extend({
   props: {
@@ -48,19 +48,21 @@ export default Vue.extend({
   },
   computed: {
     deathBlobs() {
-      return Math.ceil(this.deaths / this.blobValue);
+      return Math.ceil(this.deaths / this.calculateBlobValue);
     },
     currentlyActiveBlobs() {
-      return Math.ceil(this.active / this.blobValue);
+      return Math.ceil(this.active / this.calculateBlobValue);
     },
     totalInfected() {
-      return Math.ceil(this.total / this.blobValue);
+      return Math.ceil(this.total / this.calculateBlobValue);
+    },
+    calculateBlobValue() {
+      if (this.blobValue * 10 < this.total) {
+        return this.blobValue;
+      } else {
+        return this.blobValue / 10;
+      }
     }
-  },
-  data() {
-    return {
-      peoplePerBlob: null
-    };
   }
 });
 </script>
