@@ -1,7 +1,9 @@
 <template>
   <div class="notification">
     <div class="notification__type">Update!</div>
-    <div class="notification__text">Latest API update: {{ updatedAt }}</div>
+    <div class="notification__text">
+      Latest database update: {{ updatedAt | formatDate }}
+    </div>
   </div>
 </template>
 
