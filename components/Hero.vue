@@ -37,6 +37,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .hero {
   max-width: 740px;
+  min-height: var(--full-height);
   @apply flex mx-auto;
 
   &__text {
