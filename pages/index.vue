@@ -1,11 +1,8 @@
 <template>
   <main>
     <Hero :updatedAt="updatedAt" />
-    <hr />
-    <World :data="worldData" />
-    <hr />
     <!-- <TopCountriesToday /> -->
-    <Continents />
+    <!-- <Continents /> -->
   </main>
 </template>
 
@@ -18,8 +15,6 @@ export default Vue.extend({
   async fetch() {
     const res = await this.$axios.$get("/world");
     const worldData = res.data;
-
-    this.worldData = worldData[worldData.length - 1];
     this.updatedAt = worldData[worldData.length - 1].created_at;
   },
   created() {
@@ -29,8 +24,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      updatedAt: null,
-      worldData: null
+      updatedAt: null
     };
   }
 });
