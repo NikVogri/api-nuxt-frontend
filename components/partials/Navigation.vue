@@ -24,7 +24,7 @@
         </svg>
       </nuxt-link>
       <ul>
-        <li><nuxt-link to="/">World</nuxt-link></li>
+        <li><nuxt-link to="/world">World</nuxt-link></li>
         <li><nuxt-link to="/continents">Continents</nuxt-link></li>
         <li><nuxt-link to="/country">Country</nuxt-link></li>
         <li class="btn-link"><nuxt-link to="/api">Public Api</nuxt-link></li>
