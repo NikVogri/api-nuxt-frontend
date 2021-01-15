@@ -25,6 +25,11 @@ export default {
       chart: null
     };
   },
+  watch: {
+    data() {
+      this.renderChart();
+    }
+  },
   methods: {
     getDaysFromPeriod() {
       let dayPeriod;
@@ -113,10 +118,6 @@ export default {
   props: {
     data: {
       type: Array,
-      required: true
-    },
-    dataType: {
-      type: String,
       required: true
     }
   },
