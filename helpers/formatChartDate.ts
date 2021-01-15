@@ -1,5 +1,3 @@
-import months from "~/assets/months";
-
 const formatChartDate = (date: Date): string => {
   const day = date.getDate();
   const monthIndex = date.getMonth();
