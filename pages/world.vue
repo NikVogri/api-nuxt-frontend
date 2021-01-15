@@ -44,5 +44,9 @@ export default {
 .world {
   min-height: var(--full-height);
   @apply text-center p-8;
+
+  @media (max-width: 724px) {
+    @apply p-0;
+  }
 }
 </style>

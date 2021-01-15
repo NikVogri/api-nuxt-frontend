@@ -1,6 +1,12 @@
 <template>
   <section class="chart">
     <canvas ref="chart"></canvas>
+    <ChartController
+      :activePeriod="activePeriod"
+      :activeDataType="activeDataType"
+      @onChartDataTypeChange="updateActiveDataType"
+      @onChartDisplayPeriodChange="updateActivePeriod"
+    />
   </section>
 </template>
 
@@ -10,14 +16,72 @@ import chartOptions from "~/assets/chartOptions";
 import formatChartDate from "~/helpers/formatChartDate";
 
 export default {
+  data() {
+    return {
+      label: "Daily infections in the world",
+      activePeriod: "Week",
+      activeDataType: "newCases",
+      chartData: null,
+      chart: null
+    };
+  },
   methods: {
+    getDaysFromPeriod() {
+      let dayPeriod;
+
+      switch (this.activePeriod) {
+        case "Week":
+          dayPeriod = 7;
+          break;
+        case "Month":
+          dayPeriod = 31;
+          break;
+        case "Year":
+          dayPeriod = 365;
+          break;
+
+        default:
+          dayPeriod = 7;
+          break;
+      }
+
+      return dayPeriod;
+    },
+    updateActiveDataType(dataType) {
+      switch (dataType) {
+        case "newCases":
+          this.label = "Daily new infections";
+          break;
+        case "activeCases":
+          this.label = "Daily active infections";
+          break;
+        case "totalDeaths":
+          this.label = "Daily deaths";
+          break;
+        case "newDeaths":
+          this.label = "Daily new deaths";
+          break;
+      }
+
+      this.activeDataType = dataType;
+      this.renderChart();
+    },
+    updateActivePeriod(period) {
+      this.activePeriod = period;
+      this.renderChart();
+    },
     getChartData() {
       const labels = [];
       const data = [];
 
-      this.data.forEach(item => {
+      const dataToFormat = this.data.slice(
+        this.data.length - this.getDaysFromPeriod(),
+        this.data.length
+      );
+
+      dataToFormat.forEach(item => {
         labels.push(formatChartDate(new Date(item.created_at)));
-        data.push(item[this.dataType]);
+        data.push(item[this.activeDataType]);
       });
 
       return [labels, data];
@@ -25,18 +89,20 @@ export default {
     renderChart() {
       const [labels, data] = this.getChartData();
 
-      console.log(chartOptions);
+      if (this.chart) {
+        this.chart.destroy();
+      }
 
-      new Chart(this.$refs.chart.getContext("2d"), {
+      this.chart = new Chart(this.$refs.chart.getContext("2d"), {
         type: "line",
         data: {
           labels,
           datasets: [
             {
-              label: "Daily infections in the world: ",
+              label: this.label,
               data,
-              backgroundColor: ["rgba(75, 192, 192, 0.2)"],
-              borderColor: ["rgba(255, 99, 132, 1)"]
+              backgroundColor: ["rgba(47,128,237, 0.2)"],
+              borderColor: ["rgba(47,128,237, 0.5)"]
             }
           ]
         },
@@ -62,7 +128,7 @@ export default {
 
 <style lang="scss" scoped>
 .chart {
-  @apply p-8;
+  @apply py-4;
   .ct-chart {
     width: 100%;
   }
