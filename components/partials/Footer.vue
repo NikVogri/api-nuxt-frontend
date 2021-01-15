@@ -50,8 +50,16 @@ footer {
 .footer {
   @apply flex justify-between py-6 items-center;
 
+  @media (max-width: 720px) {
+    @apply flex-col;
+  }
+
   &__right {
     @apply flex;
+
+    @media (max-width: 720px) {
+      @apply mt-4;
+    }
 
     & > a:first-of-type {
       margin-right: 15px;

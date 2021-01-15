@@ -19,6 +19,11 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
+  loading: {
+    color: "#2f80ed",
+    height: "5px"
+  },
+
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ["~/plugins/filters.ts"],
 
