@@ -15,7 +15,7 @@
         todaysWorldData.newDeaths | formatNumber
       }})
     </p>
-    <Chart :data="worldData" :dataType="'newCases'" />
+    <Chart :data="worldData" />
   </section>
 </template>
 
