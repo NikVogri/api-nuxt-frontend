@@ -23,7 +23,7 @@ html {
   margin: 0 auto;
   max-width: 1024px;
   @media (max-width: 1024px) {
-    width: 80%;
+    width: 95%;
   }
 }
 

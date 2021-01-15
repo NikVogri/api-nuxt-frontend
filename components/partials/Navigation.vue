@@ -23,32 +23,84 @@
           />
         </svg>
       </nuxt-link>
-      <ul>
+      <ul
+        :class="{
+          active: navbarOpen
+        }"
+      >
         <li><nuxt-link to="/world">World</nuxt-link></li>
         <li><nuxt-link to="/continents">Continents</nuxt-link></li>
         <li><nuxt-link to="/country">Country</nuxt-link></li>
         <li class="btn-link"><nuxt-link to="/api">Public Api</nuxt-link></li>
       </ul>
+      <div class="burger" @click="navbarOpen = !navbarOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </nav>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import Vue from "vue";
+export default Vue.extend({
+  data() {
+    return {
+      navbarOpen: false
+    };
+  }
+});
 </script>
 
 <style lang="scss">
 nav {
-  @apply py-3 border-b border-gray-200;
+  @apply py-3 border-b border-gray-200 relative;
 
   & .navigation {
     @apply flex justify-between items-center;
-
     ul {
-      @apply flex text-lg items-center;
+      @apply flex text-lg items-center flex-row;
+
+      @media (max-width: 720px) {
+        @apply shadow p-6 border-t border-gray-200 absolute bottom-0 left-0 w-full flex items-center flex-col hidden z-50;
+        justify-content: center;
+
+        background: var(--white);
+        transform: translateY(100%);
+      }
 
       & > *:not(:last-child) {
         @apply mr-5;
+
+        @media (max-width: 720px) {
+          margin: 0;
+          margin-bottom: 24px;
+        }
+      }
+
+      &.active {
+        display: flex;
+      }
+    }
+
+    .burger {
+      cursor: pointer;
+      display: block;
+
+      @media (min-width: 720px) {
+        display: none;
+      }
+
+      & > span {
+        height: 2px;
+        display: block;
+        width: 25px;
+        background: #333;
+
+        &:nth-child(2) {
+          margin: 5px 0;
+        }
       }
     }
   }

@@ -27,7 +27,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .quote {
   width: 100%;
-  @apply text-center;
+  @apply text-center pb-8;
 
   p {
     @apply mb-2;

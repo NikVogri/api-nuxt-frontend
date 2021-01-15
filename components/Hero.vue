@@ -11,7 +11,7 @@
           </p>
         </div>
         <div class="hero__buttons">
-          <nuxt-link to="/visualization" class="btn btn-primary mr-8"
+          <nuxt-link to="/visualization" class="btn btn-primary"
             >Visualization</nuxt-link
           >
           <nuxt-link to="/api" class="btn btn-dark">Public API</nuxt-link>
@@ -40,20 +40,46 @@ export default Vue.extend({
   min-height: var(--full-height);
   @apply flex mx-auto;
 
+  @media (max-width: 564px) {
+    min-height: 100px;
+  }
+
   &__text {
     h1 {
       font-size: 70px;
       line-height: 1;
       @apply mb-4 font-bold text-center;
       color: var(--primary-blue);
+
+      @media (max-width: 564px) {
+        font-size: 54px;
+      }
     }
     p {
       @apply text-gray-800 mb-16 text-lg text-center;
+      @media (max-width: 564px) {
+        @apply text-sm mb-8;
+      }
     }
   }
 
   .hero__buttons {
     @apply flex justify-center mb-16;
+
+    & > a:first-child {
+      @apply mr-8;
+      @media (max-width: 564px) {
+        @apply mr-0;
+      }
+    }
+
+    @media (max-width: 564px) {
+      @apply flex-col items-center mb-4;
+
+      a {
+        @apply w-full mb-4;
+      }
+    }
   }
 }
 
