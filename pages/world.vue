@@ -1,20 +1,40 @@
 <template>
   <section class="world">
-    <World :data="worldData" :animateOnScroll="false" />
+    <h2 class="heading-2">World</h2>
+    <p>
+      {{ todaysWorldData.totalCases | formatNumber }} total infected since the
+      start
+    </p>
+    <p>
+      {{ todaysWorldData.activeCases | formatNumber }} active cases (+{{
+        todaysWorldData.newCases | formatNumber
+      }})
+    </p>
+    <p>
+      {{ todaysWorldData.totalDeaths | formatNumber }} deaths ( +{{
+        todaysWorldData.newDeaths | formatNumber
+      }})
+    </p>
+    <Chart :data="worldData" :dataType="'newCases'" />
   </section>
 </template>
 
 <script>
 export default {
-  async fetch() {
-    const res = await this.$axios.$get("/world");
+  async asyncData(ctx) {
+    const res = await ctx.$axios.$get("/world");
     const worldData = res.data;
 
-    this.worldData = worldData[worldData.length - 1];
+    return {
+      todaysWorldData: worldData[worldData.length - 1],
+      worldData
+    };
   },
   data() {
     return {
-      worldData: null
+      todayWorldData: null,
+      worldData: null,
+      animateOnScroll: false
     };
   }
 };
@@ -23,6 +43,6 @@ export default {
 <style lang="scss">
 .world {
   min-height: var(--full-height);
-  @apply flex justify-center items-center;
+  @apply text-center p-8;
 }
 </style>

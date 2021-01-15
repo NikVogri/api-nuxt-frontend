@@ -12,10 +12,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default Vue.extend({
-  async fetch() {
-    const res = await this.$axios.$get("/world");
+  async asyncData(ctx) {
+    const res = await ctx.$axios.$get("/world");
     const worldData = res.data;
-    this.updatedAt = worldData[worldData.length - 1].created_at;
+
+    return {
+      updatedAt: worldData[worldData.length - 1].created_at
+    };
   },
   created() {
     if (process.client) {
