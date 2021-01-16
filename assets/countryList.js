@@ -34,10 +34,6 @@ module.exports = [
     code: "AI"
   },
   {
-    name: "Antigua and Barbuda",
-    code: "AG"
-  },
-  {
     name: "Argentina",
     code: "AR"
   },
@@ -105,10 +101,7 @@ module.exports = [
     name: "Bosnia and Herzegovina",
     code: "BA"
   },
-  {
-    name: "Bouvet Island",
-    code: "BV"
-  },
+
   {
     name: "Brazil",
     code: "BR"
@@ -117,14 +110,6 @@ module.exports = [
   {
     name: "Bulgaria",
     code: "BG"
-  },
-  {
-    name: "Burkina Faso",
-    code: "BF"
-  },
-  {
-    name: "Burundi",
-    code: "BI"
   },
   {
     name: "Cambodia",
@@ -184,7 +169,7 @@ module.exports = [
     code: "CY"
   },
   {
-    name: "Czech",
+    name: "Czechia",
     code: "CZ"
   },
   {
@@ -230,10 +215,6 @@ module.exports = [
   {
     name: "Ethiopia",
     code: "ET"
-  },
-  {
-    name: "Faroe Islands",
-    code: "FO"
   },
   {
     name: "Fiji",
@@ -285,16 +266,8 @@ module.exports = [
   },
 
   {
-    name: "Guadeloupe",
-    code: "GP"
-  },
-  {
     name: "Guatemala",
     code: "GT"
-  },
-  {
-    name: "Guernsey",
-    code: "GG"
   },
   {
     name: "Guinea",
@@ -365,10 +338,6 @@ module.exports = [
     code: "JP"
   },
   {
-    name: "Jersey",
-    code: "JE"
-  },
-  {
     name: "Jordan",
     code: "JO"
   },
@@ -425,14 +394,6 @@ module.exports = [
     code: "LU"
   },
   {
-    name: "Macao",
-    code: "MO"
-  },
-  {
-    name: "Macedonia",
-    code: "MK"
-  },
-  {
     name: "Madagascar",
     code: "MG"
   },
@@ -480,10 +441,7 @@ module.exports = [
     name: "Mexico",
     code: "MX"
   },
-  {
-    name: "Moldova",
-    code: "MD"
-  },
+
   {
     name: "Monaco",
     code: "MC"
@@ -512,10 +470,7 @@ module.exports = [
     name: "Namibia",
     code: "NA"
   },
-  {
-    name: "Nauru",
-    code: "NR"
-  },
+
   {
     name: "Nepal",
     code: "NP"
