@@ -8,8 +8,10 @@
         >{{ country.name }}</option
       >
     </select>
-    <button class="btn-search" @click="getCountryData">Search</button>
-    <button class="btn-random" @click="getRandomCountryData">Random</button>
+    <div class="select-country__buttons">
+      <button class="btn-search" @click="getCountryData">Search</button>
+      <button class="btn-random" @click="getRandomCountryData">Random</button>
+    </div>
   </div>
 </template>
 
@@ -29,7 +31,6 @@ export default {
     getRandomCountryData() {
       const randomIndex = Math.floor(Math.random() * this.countryList.length);
       const randomCountryName = this.countryList[randomIndex].name;
-      console.log(randomCountryName);
 
       this.$emit("onGetCountryData", randomCountryName);
     }
@@ -39,8 +40,24 @@ export default {
 
 <style lang="scss" scoped>
 .select-country {
+  @apply flex;
+
   select {
-    @apply border border-gray-600 rounded px-4 py-2;
+    @apply border border-gray-600 rounded px-4 py-2 mr-3;
+
+    @media (max-width: 768px) {
+      @apply w-full mx-1 mt-4;
+    }
+  }
+
+  &__buttons {
+    @media (max-width: 768px) {
+      @apply mt-4 flex;
+
+      & > button {
+        @apply w-1/2 mx-1;
+      }
+    }
   }
 
   .btn {
