@@ -18,7 +18,7 @@ import formatChartDate from "~/helpers/formatChartDate";
 export default {
   data() {
     return {
-      label: "Daily infections in the world",
+      label: "Daily new infections",
       activePeriod: "Week",
       activeDataType: "newCases",
       chartData: null,
