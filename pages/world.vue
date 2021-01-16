@@ -16,6 +16,11 @@
       }})
     </p>
     <Chart :data="worldData" />
+    <VisualData
+      :data="todaysWorldData"
+      :animateOnScroll="false"
+      :peoplePerBlob="500000"
+    />
   </section>
 </template>
 
