@@ -82,8 +82,17 @@ export default {
 <style lang="scss">
 .chart-control {
   @apply flex justify-between mt-8;
+
+  @media (max-width: 724px) {
+    @apply flex-col;
+  }
+
   p {
-    @apply font-bold text-left  px-2;
+    @apply font-bold text-left;
+
+    @media (max-width: 724px) {
+      @apply mt-4;
+    }
   }
 
   ul {
@@ -91,19 +100,8 @@ export default {
     color: var(--primary-blue);
     font-weight: 500;
 
-    @media (max-width: 724px) {
-      @apply flex-col;
-    }
-
     li {
       @apply px-3 py-1;
-      &:not(:last-of-type) {
-        margin-right: 15px;
-
-        @media (max-width: 724px) {
-          margin-right: 0;
-        }
-      }
 
       &.active {
         background-color: var(--primary-blue);
