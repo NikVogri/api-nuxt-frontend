@@ -16,6 +16,7 @@
       }})
     </p>
     <Chart :data="worldData" />
+    <hr />
     <VisualData
       :data="todaysWorldData"
       :animateOnScroll="false"
