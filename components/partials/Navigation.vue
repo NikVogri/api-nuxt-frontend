@@ -31,7 +31,9 @@
         <li><nuxt-link to="/world">World</nuxt-link></li>
         <!-- <li><nuxt-link to="/continents">Continents</nuxt-link></li> -->
         <li><nuxt-link to="/country">Country</nuxt-link></li>
-        <li class="btn-link"><nuxt-link to="/api">Public Api</nuxt-link></li>
+        <li class="btn-link">
+          <nuxt-link to="/daily-updates">Get Daily Updates</nuxt-link>
+        </li>
       </ul>
       <div class="burger" @click="navbarOpen = !navbarOpen">
         <span></span>
