@@ -46,7 +46,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: `https://virus-api-updated.herokuapp.com/api/v2`,
+    baseURL: process.env.API_URL,
     retry: { retries: 3 }
   },
 
