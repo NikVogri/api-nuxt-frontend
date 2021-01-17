@@ -11,10 +11,10 @@
           </p>
         </div>
         <div class="hero__buttons">
-          <nuxt-link to="/visualization" class="btn btn-primary"
-            >Visualization</nuxt-link
+          <nuxt-link to="/world" class="btn btn-primary">World Data</nuxt-link>
+          <nuxt-link to="/daily-updates" class="btn btn-dark"
+            >Get Daily Updates</nuxt-link
           >
-          <nuxt-link to="/api" class="btn btn-dark">Public API</nuxt-link>
         </div>
         <HeroQuote />
       </div>
